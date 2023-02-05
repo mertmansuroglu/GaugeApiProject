@@ -46,6 +46,7 @@ public class ApiHelper {
      *
      * definenewrequestifull bu methoda gerek yok cunku doluysa onu kullanaracak zaten yoksada en basta olusturacak
      * asagidaki rest assured given metodu static oldugundan surekli requesti put etmeye gerek kalmayacak guncel request elimizde olacak
+     * log islemini burda yapabiliriz
      */
     public void init() {
         StoreApiInfo.put(RequestInfo.REQUEST.value, RestAssured.given());

@@ -121,6 +121,11 @@ public class StringImp extends StringHelper {
         SuiteDataStore.put(key, newText);
         log.info(SCENARIO_INFO, newText);
     }
+    @Step({"Concat text <firstText> with <secondText> and scenario store with <key> key"})
+    public void subStringAndStoreSuitStore(String firstText, String secondText,String key) {
 
-
+        String newText= firstText.concat(secondText);
+        ScenarioDataStore.put(key,newText);
+        log.info(SCENARIO_INFO, newText);
+    }
 }

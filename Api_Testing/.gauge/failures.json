@@ -5,5 +5,7 @@
 		"--hide-suggestion",
 		"--simple-console"
 	],
-	"FailedItems": []
+	"FailedItems": [
+		"specs\\Relimetrics\\UserSpecsV2\\CreateUserTestV2.spec:25"
+	]
 }

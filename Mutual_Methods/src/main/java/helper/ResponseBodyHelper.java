@@ -43,7 +43,7 @@ public class  ResponseBodyHelper {
         checkIfResponseNull();
         try {
             Response response = (Response) StoreApiInfo.get(RESPONSE.value);
-            return response.then().extract().asString();
+            return response.then().log().all().extract().asString();
         } catch (Exception e) {
             log.warn("Response could not get as String \n Exception detail:\n {}", e.getMessage());
             throw e;
@@ -61,10 +61,11 @@ public class  ResponseBodyHelper {
      * example : System.out.println(id); //2
      */
     private JsonPath getResponseAsJsonPath() throws NullResponse {
+        //istersek log koyup kontrolu burdan yapabiliriz
         checkIfResponseNull();
         try {
             Response response = (Response) StoreApiInfo.get(RESPONSE.value);
-            return response.then().extract().jsonPath();
+            return response.then().log().all().extract().jsonPath();
         } catch (Exception e) {
             log.warn("Response could not get as JsonPath \n Exception detail:\n {}", e.getMessage());
             throw e;

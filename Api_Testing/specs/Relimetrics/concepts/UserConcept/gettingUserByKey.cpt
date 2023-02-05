@@ -1,0 +1,12 @@
+Created by Mert.Mansuroglu on 1/5/2023
+
+This is a concept file with following syntax for each concept.
+# Getting the user with <userKey> key
+  * Define new request
+  * Add base url "https://4.184.73.178:5001"
+  * Concat text "/identity/get_user_by_key/" with <userKey> and scenario store with "getUserEndPoint" key
+  * Add endpoint "getUserEndPoint"
+  * Add auth token from scenario store "TOKEN"
+  * Add relaxed HTTPS validation
+  * Get request
+

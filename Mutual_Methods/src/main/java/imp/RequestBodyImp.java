@@ -1,6 +1,5 @@
 package imp;
 
-
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.TableRow;
@@ -59,7 +58,9 @@ public class RequestBodyImp extends RequestBodyHelper {
         List<TableRow> rows = table.getTableRows();
         HashMap<Object, Object> body = new HashMap<>();
         for (TableRow row : rows) {
-            body.put(row.getCellValues().get(0), row.getCellValues().get(1));
+            if(!row.getCellValues().get(1).equals("remove_field")) {
+                body.put(row.getCellValues().get(0), row.getCellValues().get(1));
+            }
         }
         addBody(body);
     }

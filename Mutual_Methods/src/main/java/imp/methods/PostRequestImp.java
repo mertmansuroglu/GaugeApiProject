@@ -12,6 +12,7 @@ public class PostRequestImp extends PostHelper {
     @Step({"Post request", "Post isteği gönder"})
     public void postRequests() throws RequestNotDefined {
         postRequest();
+
     }
 
     @Step({"Post request <url>", "Post isteği gönder <url>"})

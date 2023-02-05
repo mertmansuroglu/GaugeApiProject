@@ -8,6 +8,10 @@ import helper.RandomHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 public class RandomDataStore extends RandomHelper {
 
@@ -126,5 +130,14 @@ public class RandomDataStore extends RandomHelper {
     public void generateBetweenNumberStoreScenario(int beginNumber, int endNumber, String key) {
         ScenarioDataStore.put(key, generateNumberBetweenTwoBound(beginNumber, endNumber));
         log.info(BETWEEN_NUMBER, beginNumber, endNumber, ScenarioDataStore.get(key));
+    }
+    @Step({"Generate a hashcode for given <password> and store it in Scenario store with <key>"})
+    public void generateHashCodeForGivenPassword(String password,String key) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        ScenarioDataStore.put(key, myHash);
     }
 }

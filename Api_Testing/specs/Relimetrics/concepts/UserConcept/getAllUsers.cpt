@@ -1,0 +1,15 @@
+Created by Mert.Mansuroglu on 1/4/2023
+
+This is a concept file with following syntax for each concept.
+
+
+  # Get All Users
+  * Define new request
+  * Add base url "https://4.184.73.178:5001"
+  * Add endpoint "/identity/get_users"
+  * Add auth token from scenario store "TOKEN"
+  * Add relaxed HTTPS validation
+  * Get request
+  * Check if status code is "200"
+  * Get "content" from response and store it with "contentAfter" during scenario
+  * Get array length from "contentAfter" json list and store it during Scenario with "idCount"

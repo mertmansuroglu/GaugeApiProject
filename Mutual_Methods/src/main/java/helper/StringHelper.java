@@ -3,6 +3,9 @@ package helper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -58,6 +61,16 @@ public class StringHelper {
             return text.substring(firstIndex, lastIndex[0]);
         }
 
+    }
+    public static String stringToMd5(String Value)
+            throws NoSuchAlgorithmException, NoSuchAlgorithmException {
+
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(Value.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter.printHexBinary(digest).toLowerCase();
+
+       return  myHash;
     }
 
 }

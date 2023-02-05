@@ -42,6 +42,7 @@ public class RequestBodyHelper {
      * @throws RequestNotDefined if request is null, the exception will throw
      */
     protected void addBody(Map<Object, Object> body) throws RequestNotDefined {
+
         ApiHelper.getInstance().getRequestSpecification().body(body);
         log.info(LOG_INFO, body);
     }

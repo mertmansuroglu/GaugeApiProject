@@ -5,6 +5,7 @@ import helper.ApiHelper;
 import io.cucumber.java.en.Given;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import utils.Utils;
 
 
 public class RequestImp {
@@ -19,4 +20,6 @@ public class RequestImp {
         ApiHelper.getInstance().defineNewRequest();
         log.info("New request defined");
     }
+
+
 }

@@ -39,6 +39,10 @@ public class AuthHelper {
         HeaderHelper headerHelper = new HeaderHelper();
         headerHelper.addBearerTokenToHeader(token);
     }
+    protected void addAuthToken(String token){
+        HeaderHelper headerHelper = new HeaderHelper();
+        headerHelper.addHeader("Authorization",token);
+    }
     protected void oauth2(String var1){
         ApiHelper.getInstance().getRequestSpecification().auth().oauth2(var1);
     }

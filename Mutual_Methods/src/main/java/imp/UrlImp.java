@@ -2,6 +2,8 @@ package imp;
 
 import com.thoughtworks.gauge.Step;
 import helper.RequestUrlHelper;
+import utils.Utils;
+
 
 public class UrlImp extends RequestUrlHelper {
 
@@ -16,6 +18,8 @@ public class UrlImp extends RequestUrlHelper {
 
     @Step({"Add endpoint <url>", "Endpoint ekle <url>", "Add base path <url>"})
     public void addBasePathToReq(String url) {
-        addBasePath(url);
+
+       String newURL= (String) Utils.getFromStoreData(url);
+        addBasePath(newURL);
     }
 }

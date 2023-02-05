@@ -1,0 +1,18 @@
+Created by Mert.Mansuroglu on 1/5/2023
+
+This is a concept file with following syntax for each concept.
+    # Create user with username : <username> , password: <password>,role: <role>, key: <key>, Use Auth :<Use Auth>, Request Method:<Method>
+    * Define new request
+    * Add base url "https://4.184.73.178:5001"
+    * Add endpoint "/identity/create_user"
+    * Add body as map
+        |key            |value              |
+        |---------------|-------------------|
+        |key            |<key>              |
+        |username       |<username>         |
+        |password       |<password>         |
+        |role           |<role>             |
+    * Set contentType is JSON
+    * Add auth token from scenario store "TOKEN" depend on <Use Auth>
+    * Add relaxed HTTPS validation
+    * Build Request depends on  <Method>

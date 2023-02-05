@@ -42,7 +42,7 @@ public class HeaderHelper {
      * @param key   it is the header key.
      * @param value it is the header value
      */
-    protected void addHeader(String key, String value) {
+    public void addHeader(String key, String value) {
         ApiHelper.getInstance().getRequestSpecification().header(key, value);
         log.info("{}, {} header added", key, value);
     }

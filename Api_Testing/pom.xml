@@ -20,9 +20,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>testing_frameworks</groupId>
-            <artifactId>mutual_methods</artifactId>
-            <version>0.0.1</version>
+            <groupId>org.example</groupId>
+            <artifactId>Mutual_Methods</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>

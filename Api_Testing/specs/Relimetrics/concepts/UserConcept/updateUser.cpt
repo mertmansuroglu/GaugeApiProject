@@ -1,0 +1,30 @@
+Created by Mert.Mansuroglu on 1/7/2023
+
+# Update user with key: <key>, username : <username>, password: <password>, role: <role>
+    * Define new request
+    * Add base url "https://4.184.73.178:5001"
+    * Add endpoint "/identity/update_user"
+    * Add body as map
+        |key            |value              |
+        |---------------|-------------------|
+        |key            |<key>              |
+        |username       |<username>         |
+        |password       |<password>         |
+        |role           |<role>             |
+    * Set contentType is JSON
+    * Add auth token from scenario store "TOKEN"
+    * Add relaxed HTTPS validation
+    * Put request
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

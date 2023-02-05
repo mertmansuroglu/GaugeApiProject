@@ -3,6 +3,7 @@ package imp.methods;
 import com.thoughtworks.gauge.Step;
 import exceptions.RequestNotDefined;
 import helper.methods.GetHelper;
+import helper.methods.PutHelper;
 
 public class GetRequestImp extends GetHelper {
 
@@ -14,5 +15,6 @@ public class GetRequestImp extends GetHelper {
     @Step({"Get request <url>", "Get isteği gönder <url>"})
     public void getRequests(String url) throws RequestNotDefined {
         getRequest(url);
+
     }
 }

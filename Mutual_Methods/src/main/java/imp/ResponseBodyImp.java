@@ -88,8 +88,17 @@ public class ResponseBodyImp extends ResponseBodyHelper {
     @Step({"Get <selector> from response and store it with <key> during scenario",
             "Respons'dan <selector> değerini getir ve <key> anahtarı ile senaryo boyunca sakla"})
     public void getResponseElementValueForScenario(String selector, String key) throws NullResponse, NullValue {
+        if (!selector.equals("null")) {
+            Object value = getResponseElement(selector);
+            ScenarioDataStore.put(key, value);
+            log.info("\"{}\" is stored with \"{}\" during scenario", selector, key);
+        }
+    }
+    @Step({"Get <selector> from response and store it with <key> during suit",
+            "Respons'dan <selector> değerini getir ve <key> anahtarı ile suit boyunca sakla"})
+    public void getResponseElementValueForSuit(String selector, String key) throws NullResponse, NullValue {
         Object value = getResponseElement(selector);
-        ScenarioDataStore.put(key, value);
+        SpecDataStore.put(key, value);
         log.info("\"{}\" is stored with \"{}\" during scenario", selector, key);
     }
 
@@ -149,5 +158,4 @@ public class ResponseBodyImp extends ResponseBodyHelper {
         var list = getListFromResponse(jsonKey);
         ScenarioDataStore.put(key, list);
     }
-
 }

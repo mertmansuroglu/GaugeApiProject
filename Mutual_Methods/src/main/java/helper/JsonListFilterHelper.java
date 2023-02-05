@@ -2,6 +2,9 @@ package helper;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Objects;
+
+import static java.lang.Object.*;
 
 public class JsonListFilterHelper {
 
@@ -29,7 +32,7 @@ public class JsonListFilterHelper {
     protected Object getJsonValueByFilter(Object jsonPathObj, String filterSelector, String filterValue, String requestedSelector) {
         @SuppressWarnings("unchecked")
         var jsonPath = (List<LinkedHashMap<String, Object>>) jsonPathObj;
-
+        jsonPath.size();
         for (LinkedHashMap<String, Object> json : jsonPath) {
             String json_result = String.valueOf(json.get(filterSelector));
             if (json_result.equalsIgnoreCase(filterValue)) {
@@ -38,4 +41,11 @@ public class JsonListFilterHelper {
         }
         return null;
     }
+    protected Object getJsonObjectCountInArray(Object jsonPathObj) {
+        @SuppressWarnings("unchecked")
+        var jsonPath = (List<LinkedHashMap<String, Object>>) jsonPathObj;
+        return jsonPath.toArray().length;
+
+    }
+
 }

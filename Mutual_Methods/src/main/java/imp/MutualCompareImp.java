@@ -1,6 +1,9 @@
 package imp;
 
 import com.thoughtworks.gauge.Step;
+import exceptions.NullResponse;
+import exceptions.NullValue;
+import helper.ResponseBodyHelper;
 import utils.Utils;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,23 +16,18 @@ public class MutualCompareImp {
 
     /**
      * asagida direk valuelari compare ederiz!!
-     * @param key1
-     * @param key2
      * simdi biz responsebody helperda responsu obje olarak aldiksonra bunu datastore a eklemistik
      * ekledigimiz response objesini alip storeDatadan sonrada utilsten parse same type metoduna ki valueyida atip ayni tipte olmasini sagliyoruz
      * en sonda assertion islemini gerceklestiriyorz
      */
-    @Step({"Get <key1> and <key> from scenario store and then compare, Are they equals?",
-            "Key <key1> ve <key2>'i senaryo deposundan getir ve eşit olduklarını doğrula",
-            "Get <key1> and <key2> from the scenario store and verify they are equal"})
+    @Step("Get <key1> and <key2> from scenario store and then compare, Are they equals?")
     public void dataCompareEquals(String key1, String key2) {
         Object value1 = Utils.getFromStoreData(key1);
         Object value2 = Utils.getFromStoreData(key2);
         Utils utils = new Utils();
         value2 = utils.parsSameType(value1, value2);
-        assertEquals(value1, value2, ARE_N0T_EQUALS);
+        assertEquals(value1, value2, EQUALS);
     }
-
 
     @Step({"Get <key1> and <key> from scenario store and then compare, Are they not equals?",
             "Key <key1> ve <key2>'i senaryo deposundan getir ve eşit olmadıklarını doğrula",
@@ -80,7 +78,7 @@ public class MutualCompareImp {
         Object value1 = Utils.getFromStoreData(key1);
         Utils utils = new Utils();
         value = utils.parsSameType(value1, Utils.getFromStoreData(String.valueOf(value)));
-        assertEquals(value1, value, ARE_N0T_EQUALS);
+        assertEquals(value1, value, EQUALS);
     }
 
     @Step({"Get <key1> from spec store and then compare with <value>, Are they equals?",
@@ -145,6 +143,14 @@ public class MutualCompareImp {
         String value1 = String.valueOf(Utils.getFromStoreData(key1));
         assertTrue(value1.contains(value), String.format(CONTAINS, value1, value));
     }
-
+    @Step("Get <key1> and <key2> from scenario store and then compare, if second one is equal to firstone plus 1")
+    public void dataComparePlusOne(String key1, String key2) {
+        Object value1 = Utils.getFromStoreData(key1);
+        Object value2 = Utils.getFromStoreData(key2);
+        int intval1=(Integer)value1;
+        int intval2=(Integer)value2;
+        int before=intval1+1;
+        assertEquals(before, intval2, EQUALS);
+    }
 
 }

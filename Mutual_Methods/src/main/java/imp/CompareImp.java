@@ -4,10 +4,12 @@ import com.thoughtworks.gauge.Step;
 import exceptions.NullResponse;
 import exceptions.NullValue;
 import helper.ResponseBodyHelper;
+import helper.StringHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import utils.Utils;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -57,6 +59,34 @@ public class CompareImp  {
         Utils utils = new Utils();
         value = utils.parsSameType(value2, value);
         assertEquals(value, value2, EQUALS);
+    }
+    @Step({"Get <selector> from response and then compare with MD5 encrypted <value>, Are they equals?",
+            "Get value with <selector> from response and verify it is equal with MD5 encrypted <value>",
+            "Yanıttan <selector> ile değer alın ve MD5 şifrelenmiş <value> ile eşit olduğunu doğrulayın"})
+    public void dataCompareEqualsFromResponseWithMD5(String selector, Object value) throws NullResponse, NullValue, NoSuchAlgorithmException {
+        ResponseBodyHelper responseBodyHelper = new ResponseBodyHelper();
+        Object value2 = responseBodyHelper.getResponseElement(selector);
+
+        Utils utils = new Utils();
+        value=StringHelper.stringToMd5( value.toString());
+        value = utils.parsSameType(value2, value);
+
+        assertEquals(value, value2, EQUALS);
+    }
+
+    @Step({"Get <selector> from response and then compare with MD5 encrypted <value>, Are they not equals?",
+            "Get value with <selector> from response and verify it is not equal with MD5 encrypted <value>",
+            "Yanıttan <selector> ile değer alın ve MD5 şifrelenmiş <value> ile eşit olmadığını doğrulayın"})
+    public void dataCompareNotEqualsFromResponseWithMD5(String selector, Object value) throws NullResponse, NullValue, NoSuchAlgorithmException {
+        ResponseBodyHelper responseBodyHelper = new ResponseBodyHelper();
+        Object value2 = responseBodyHelper.getResponseElement(selector);
+
+        Utils utils = new Utils();
+        value=StringHelper.stringToMd5( value.toString());
+        value = utils.parsSameType(value2, value);
+
+        assertNotEquals(value, value2, ARE_N0T_EQUALS);
+
     }
 
     /**
